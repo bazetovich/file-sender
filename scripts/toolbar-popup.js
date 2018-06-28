@@ -2,6 +2,18 @@ const el = document.querySelector('input[type="file"]');
 const link = document.querySelector(".link");
 const pond = FilePond.create(el);
 
+function fileLoadHandler(res) {
+  res = JSON.parse(res);
+
+  link.setAttribute("href", res.link);
+  link.classList.add("active");
+}
+
+function deActivateLink() {
+  link.removeAttribute("href");
+  link.classList.remove("active");
+}
+
 pond.setOptions({
   name: "file",
   server: {
@@ -22,8 +34,11 @@ pond.setOptions({
   }
 });
 
-function fileLoadHandler(res) {
-  res = JSON.parse(res);
+pond.onremovefile = deActivateLink;
 
-  link.setAttribute("href", res.link);
-}
+link.onclick(function() {
+  if (link.classList.contains("active")) {
+    deActivateLink();
+    pond.removeFiles();
+  }
+});
