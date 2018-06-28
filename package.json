@@ -1,7 +1,7 @@
 {
   "name": "file-uploader",
   "version": "1.0.0",
-  "description": "",
+  "description": "Google chrome extension",
   "main": "index.html",
   "scripts": {
     "start": "parcel index.html --open",
