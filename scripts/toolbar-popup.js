@@ -1,5 +1,6 @@
-const inputElement = document.querySelector('input[type="file"]');
-const pond = FilePond.create(inputElement);
+const el = document.querySelector('input[type="file"]');
+const link = document.querySelector(".link");
+const pond = FilePond.create(el);
 
 pond.setOptions({
   name: "file",
@@ -11,7 +12,7 @@ pond.setOptions({
       withCredentials: false,
       headers: {},
       timeout: 7000,
-      onload: null,
+      onload: fileLoadHandler,
       onerror: null
     },
     fetch: null,
@@ -20,3 +21,9 @@ pond.setOptions({
     restore: null
   }
 });
+
+function fileLoadHandler(res) {
+  res = JSON.parse(res);
+
+  link.setAttribute("href", res.link);
+}
