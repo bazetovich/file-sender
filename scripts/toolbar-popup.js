@@ -1,17 +1,24 @@
 const el = document.querySelector('input[type="file"]');
+const linkWrap = document.querySelector(".link-wrap");
 const link = document.querySelector(".link");
 const pond = FilePond.create(el);
 
 function fileLoadHandler(res) {
-  res = JSON.parse(res);
+  try {
+    res = JSON.parse(res);
 
-  link.setAttribute("href", res.link);
-  link.classList.add("active");
+    link.append(res.link);
+    link.setAttribute("href", res.link);
+    toggleLinkWrap(true);
+  } catch (e) {}
 }
 
-function deActivateLink() {
-  link.removeAttribute("href");
-  link.classList.remove("active");
+function toggleLinkWrap(flag) {
+  if (flag) {
+    linkWrap.classList.add("active");
+  } else {
+    linkWrap.classList.remove("active");
+  }
 }
 
 pond.setOptions({
@@ -34,11 +41,11 @@ pond.setOptions({
   }
 });
 
-pond.onremovefile = deActivateLink;
+pond.onremovefile = function() {
+  toggleLinkWrap(false);
+};
 
-link.onclick(function() {
-  if (link.classList.contains("active")) {
-    deActivateLink();
-    pond.removeFiles();
-  }
-});
+link.onclick = function() {
+  toggleLinkWrap(false);
+  pond.removeFiles();
+};

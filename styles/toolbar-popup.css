@@ -4,7 +4,7 @@ body {
   padding: 0;
   width: 350px;
   height: 186px;
-  background: #f7f7f7;
+  background: #fff;
 }
 
 .toolbar-popup {
@@ -15,31 +15,36 @@ body {
   padding: 20px;
 }
 
-.link {
+.link-wrap {
+  opacity: 0;
+  visibility: hidden;
   position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   user-select: none;
   display: block;
   top: 121px;
   width: 310px;
   box-sizing: border-box;
-  text-align: center;
-  text-decoration: none;
-  font-size: 24px;
-  line-height: 41px;
-  background: #dadada;
-  color: #e4e4e4;
-  border-radius: 5px;
-  height: 45px;
-  transition: background 0.2s ease-out, color 0.2s ease-out;
+  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
 }
 
-.link.active {
-  color: #d0e4f8;
-  background: #4696e5;
+.link-wrap.active {
+  opacity: 1;
+  visibility: visible;
 }
 
-.link.active:hover {
-  color: #fff;
+.link {
+  color: #4696e5;
+  font-weight: bold;
+}
+
+.warning {
+  display: block;
+  color: #b7b7b7;
+  padding-top: 15px;
+  white-space: normal;
 }
 
 .filepond--root {
