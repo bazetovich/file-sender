@@ -16,8 +16,6 @@ body {
 }
 
 .link-wrap {
-  opacity: 0;
-  visibility: hidden;
   position: absolute;
   white-space: nowrap;
   overflow: hidden;
@@ -27,12 +25,14 @@ body {
   top: 121px;
   width: 310px;
   box-sizing: border-box;
-  transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
 }
 
-.link-wrap.active {
-  opacity: 1;
-  visibility: visible;
+.link-wrap.active .pre-link {
+  color: #565656;
+}
+
+.pre-link {
+  color: #b7b7b7;
 }
 
 .link {

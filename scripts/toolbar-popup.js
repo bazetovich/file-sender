@@ -7,7 +7,7 @@ function fileLoadHandler(res) {
   try {
     res = JSON.parse(res);
 
-    link.append(res.link);
+    link.text = res.link;
     link.setAttribute("href", res.link);
     toggleLinkWrap(true);
   } catch (e) {}
@@ -42,10 +42,12 @@ pond.setOptions({
 });
 
 pond.onremovefile = function() {
+  link.text = "";
   toggleLinkWrap(false);
 };
 
 link.onclick = function() {
-  toggleLinkWrap(false);
+  link.text = "";
   pond.removeFiles();
+  toggleLinkWrap(false);
 };
