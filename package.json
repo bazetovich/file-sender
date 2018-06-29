@@ -1,15 +1,6 @@
 {
-  "name": "file-uploader",
+  "name": "file-sharer",
   "version": "1.0.0",
-  "description": "Google chrome extension",
-  "main": "index.html",
-  "scripts": {
-    "start": "parcel index.html --open",
-    "build": "parcel build index.html"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "parcel-bundler": "^1.6.1"
-  },
-  "keywords": []
+  "description": "Google chrome extension based on file.io API",
+  "keywords": ["file.io"]
 }
